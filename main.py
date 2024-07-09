@@ -42,7 +42,7 @@ spam_labels = {
 }
 
 hate_speech_labels = {
-    'LABEL_0': 'Tốt',
+    'LABEL_0': 'Bình thường',
     'LABEL_1': 'Xúc phạm',
     'LABEL_2': 'Ngôn từ thù ghét'
 }
@@ -75,6 +75,7 @@ if model_type == "VisoBERT":
     model_names = model_names_visobert
 else:
     model_names = model_names_visogcn
+
 device = 'cpu'
 classifier_vihos = pipeline("ner", model=model_names["hate_speech_span"], device=device)
 classifiers = {
@@ -121,21 +122,20 @@ if st.button("Classify"):
         else:
             if task == "Nhận diện cảm xúc":
                 results = classify_text(text_input, classifiers["emotion"])
-                label = emotion_labels[results[0]['label']]
-                score = results[0]['score']
+                labels = emotion_labels
             elif task == "Phân tích cảm xúc":
                 results = classify_text(text_input, classifiers["sentiment"])
-                label = sentiment_labels[results[0]['label']]
-                score = results[0]['score']
+                labels = sentiment_labels
             elif task == "Phát hiện spam":
                 results = classify_text(text_input, classifiers["spam"])
-                label = spam_labels[results[0]['label']]
-                score = results[0]['score']
+                labels = spam_labels
             elif task == "Phát hiện lời nói căm thù":
                 results = classify_text(text_input, classifiers["hate_speech"])
-                label = hate_speech_labels[results[0]['label']]
-                score = results[0]['score']
+                labels = hate_speech_labels
 
-            st.write(f"{task}: {label} (Score: {score:.4f})")
+            for result in results:
+                label = labels[result['label']]
+                score = result['score']
+                st.write(f"{label}: (Score: {score:.4f})")
     else:
         st.write("Please enter some text to classify.")

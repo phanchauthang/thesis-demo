@@ -1,2 +1,2 @@
 pip install -r a.txt
-streamlit run main.py -
+streamlit run main.py 

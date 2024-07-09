@@ -18,10 +18,35 @@ model_names_visobert = {
     "hate_speech_span": "mecoaoge2/ViHOS1"
 }
 
-emotion_labels = {'LABEL_6': 'Other', 'LABEL_4': 'Disgust', 'LABEL_5': 'Enjoyment', 'LABEL_3': 'Anger', 'LABEL_2': 'Surprise', 'LABEL_0': 'Sadness', 'LABEL_1': 'Fear'}
-sentiment_labels = {'LABEL_0': 'Good', 'LABEL_1': 'Normal', 'LABEL_2': 'Bad'}
-spam_labels = {'LABEL_0': 'No Spam', 'LABEL_1': 'Fake Review', 'LABEL_2': 'review on brand only','LABEL_3':'non-review'}
-hate_speech_labels = {'LABEL_0': 'Good', 'LABEL_1': 'Offensive', 'LABEL_2': 'Hate Speech'}
+emotion_labels = {
+    'LABEL_6': 'Cảm xúc khác',
+    'LABEL_4': 'Ghê tởm',
+    'LABEL_5': 'Thích thú',
+    'LABEL_3': 'Tức giận',
+    'LABEL_2': 'Ngạc nhiên',
+    'LABEL_0': 'Buồn',
+    'LABEL_1': 'Sợ hãi'
+}
+
+sentiment_labels = {
+    'LABEL_0': 'Tốt',
+    'LABEL_1': 'Bình thường',
+    'LABEL_2': 'Xấu'
+}
+
+spam_labels = {
+    'LABEL_0': 'Không phải spam',
+    'LABEL_1': 'Đánh giá giả mạo',
+    'LABEL_2': 'Chỉ đánh giá thương hiệu',
+    'LABEL_3': 'Không phải đánh giá'
+}
+
+hate_speech_labels = {
+    'LABEL_0': 'Tốt',
+    'LABEL_1': 'Xúc phạm',
+    'LABEL_2': 'Ngôn từ thù ghét'
+}
+
 
 # Streamlit app
 # Create two columns
